@@ -1,0 +1,395 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 头部样式 */
+.site-header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-header h1 {
+    font-size: 1.8rem;
+}
+
+nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #3498db;
+}
+
+nav span {
+    font-weight: 500;
+}
+
+/* 主内容区样式 */
+main {
+    padding: 2rem 0;
+    min-height: calc(100vh - 180px);
+}
+
+/* 按钮样式 */
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+.btn.submit-btn {
+    background-color: #2ecc71;
+}
+
+.btn.submit-btn:hover {
+    background-color: #27ae60;
+}
+
+.btn.cancel-btn, .btn.back-btn {
+    background-color: #95a5a6;
+}
+
+.btn.cancel-btn:hover, .btn.back-btn:hover {
+    background-color: #7f8c8d;
+}
+
+.btn.edit-btn {
+    background-color: #f39c12;
+}
+
+.btn.edit-btn:hover {
+    background-color: #d35400;
+}
+
+.btn.delete-btn {
+    background-color: #e74c3c;
+}
+
+.btn.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* 表单样式 */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* 认证页面样式 */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.auth-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-card h2 {
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.auth-link {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+/* 模块列表样式 */
+.modules-list h2 {
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.module-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.module-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.module-card h3 {
+    margin-bottom: 0.8rem;
+    color: #2c3e50;
+}
+
+.module-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #eee;
+}
+
+.module-description {
+    margin-bottom: 1rem;
+    color: #555;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.module-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 3rem;
+    color: #7f8c8d;
+    background-color: white;
+    border-radius: 8px;
+}
+
+/* 模块详情页样式 */
+.module-header {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.module-header h2 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.module-meta {
+    margin-bottom: 1rem;
+}
+
+.module-actions {
+    margin-top: 1rem;
+}
+
+.module-description {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.module-description h3,
+.module-code h3 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    font-size: 1.3rem;
+}
+
+.module-code {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* 上传表单样式 */
+.upload-form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.upload-form h2 {
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+/* 管理员面板样式 */
+.admin-panel {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.admin-panel h2 {
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+.admin-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.admin-section h3 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #eee;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.disabled-action {
+    color: #bdc3c7;
+    font-style: italic;
+}
+
+/* 页脚样式 */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .site-header .container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .modules-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .module-actions {
+        flex-direction: column;
+    }
+
+    .admin-sections {
+        flex-direction: column;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+}

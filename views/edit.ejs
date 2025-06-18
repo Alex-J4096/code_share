@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑代码模块 - 代码模块分享平台</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>代码模块分享平台</h1>
+            <nav>
+                <span>欢迎, <%= user.username %>!</span>
+                <% if (user.isAdmin) { %>
+                    <a href="/admin">管理员面板</a>
+                <% } %>
+                <a href="/">返回首页</a>
+                <a href="/logout">退出登录</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="upload-form">
+            <h2>编辑代码模块</h2>
+            <form action="/edit/<%= module.id %>" method="POST">
+                <div class="form-group">
+                    <label for="title">模块标题</label>
+                    <input type="text" id="title" name="title" value="<%= module.title %>" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="description">模块描述</label>
+                    <textarea id="description" name="description" rows="3"><%= module.description || '' %></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="language">代码语言</label>
+                    <select id="language" name="language" required>
+                        <option value="javascript" <%= module.language === 'javascript' ? 'selected' : '' %>>JavaScript</option>
+                        <option value="css" <%= module.language === 'css' ? 'selected' : '' %>>CSS</option>
+                        <option value="html" <%= module.language === 'html' ? 'selected' : '' %>>HTML</option>
+                        <option value="vue" <%= module.language === 'vue' ? 'selected' : '' %>>Vue</option>
+                        <option value="python" <%= module.language === 'python' ? 'selected' : '' %>>Python</option>
+                        <option value="java" <%= module.language === 'java' ? 'selected' : '' %>>Java</option>
+                        <option value="c" <%= module.language === 'c' ? 'selected' : '' %>>C</option>
+                        <option value="cpp" <%= module.language === 'cpp' ? 'selected' : '' %>>C++</option>
+                        <option value="auto" <%= module.language === 'auto' ? 'selected' : '' %>>自动检测</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="code">代码内容</label>
+                    <textarea id="code" name="code" rows="15" required><%= module.code %></textarea>
+                    <small>选择正确的语言可获得最佳高亮效果</small>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn submit-btn">保存修改</button>
+                    <a href="/module/<%= module.id %>" class="btn cancel-btn">取消</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>代码模块分享平台 &copy; <%= new Date().getFullYear() %></p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script>
+        // 简单的代码编辑器功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const codeInput = document.getElementById('code');
+            // 设置初始高度
+            codeInput.style.height = (codeInput.scrollHeight) + 'px';
+            // 为代码输入框添加自动调整高度功能
+            codeInput.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = (this.scrollHeight) + 'px';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员面板 - 代码模块分享平台</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>代码模块分享平台</h1>
+            <nav>
+                <span>欢迎, <%= user.username %> (管理员)</span>
+                <a href="/">返回首页</a>
+                <a href="/upload">上传模块</a>
+                <a href="/logout">退出登录</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="admin-panel">
+            <h2>管理员面板</h2>
+            
+            <div class="admin-sections">
+                <div class="admin-section">
+                    <h3>用户管理</h3>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>用户名</th>
+                                <th>角色</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% users.forEach(user => { %>
+                                <tr>
+                                    <td><%= user.id %></td>
+                                    <td><%= user.username %></td>
+                                    <td><%= user.isAdmin ? '管理员' : '普通用户' %></td>
+                                    <td class="actions">
+                                        <% if (!user.isAdmin) { %>
+                                            <button class="btn delete-btn" onclick="return confirm('确定要删除此用户吗？这将同时删除该用户的所有模块。');">删除</button>
+                                        <% } else { %>
+                                            <span class="disabled-action">不可删除</span>
+                                        <% } %>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="admin-section">
+                    <h3>模块管理</h3>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>标题</th>
+                                <th>作者</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% modules.forEach(module => { %>
+                                <tr>
+                                    <td><%= module.id %></td>
+                                    <td><a href="/module/<%= module.id %>"><%= module.title %></a></td>
+                                    <td><%= module.username %></td>
+                                    <td><%= new Date(module.createdAt).toLocaleString() %></td>
+                                    <td class="actions">
+                                        <a href="/edit/<%= module.id %>" class="btn edit-btn">编辑</a>
+                                        <a href="/delete/<%= module.id %>" class="btn delete-btn" onclick="return confirm('确定要删除此模块吗？');">删除</a>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>代码模块分享平台 &copy; <%= new Date().getFullYear() %></p>
+        </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

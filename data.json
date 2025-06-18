@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1750245108822,
+    "title": "123",
+    "code": ".controlBox-info {\r\n  padding: 10px;\r\n}\r\n\r\n.section {\r\n  margin-top: -10px;\r\n  padding: 0;\r\n  margin-bottom: 20px;\r\n}",
+    "description": "测试",
+    "username": "admin",
+    "userId": 1,
+    "createdAt": "2025-06-18T11:11:48.822Z"
+  }
+]

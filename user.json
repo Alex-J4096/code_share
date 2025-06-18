@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "$2a$10$F34til1Z98VbmfW3M86AM.qwi/Myq3NJ54abLMHthoqp5fzTMrF5.",
+    "isAdmin": true
+  },
+  {
+    "id": 1750246324468,
+    "username": "juyi",
+    "password": "$2a$10$14tSNQZ9GHtvdUTU5HPwJOECOwSpkfUI60/wuAe8QOlbjiHcXmgYa",
+    "isAdmin": false
+  }
+]

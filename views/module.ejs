@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= module.title %> - 代码模块分享平台</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+    <style>
+        .code-container {
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        pre code {
+            display: block;
+            padding: 15px;
+            overflow-x: auto;
+            line-height: 1.5;
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>代码模块分享平台</h1>
+            <nav>
+                <span>欢迎, <%= user.username %>!</span>
+                <% if (user.isAdmin) { %>
+                    <a href="/admin">管理员面板</a>
+                <% } %>
+                <a href="/upload">上传模块</a>
+                <a href="/">返回首页</a>
+                <a href="/logout">退出登录</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="module-detail">
+            <div class="module-header">
+                <h2><%= module.title %></h2>
+                <div class="module-meta">
+                    <span>作者: <%= module.username %></span>
+                    <span>创建时间: <%= new Date(module.createdAt).toLocaleString() %></span>
+                </div>
+                <div class="module-actions">
+                    <% if (user.id === module.userId || user.isAdmin) { %>
+                        <a href="/edit/<%= module.id %>" class="btn edit-btn">编辑</a>
+                        <a href="/delete/<%= module.id %>" class="btn delete-btn" onclick="return confirm('确定要删除此模块吗？');">删除</a>
+                    <% } %>
+                    <a href="/" class="btn back-btn">返回列表</a>
+                </div>
+            </div>
+
+            <div class="module-description">
+                <h3>模块描述</h3>
+                <p><%= module.description || '无描述' %></p>
+            </div>
+
+            <div class="module-code">
+                <h3>代码内容</h3>
+                <div class="code-container">
+                    <pre><code class="language-<%= module.language || 'auto' %>"><%- module.highlightedCode %></code></pre>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>代码模块分享平台 &copy; <%= new Date().getFullYear() %></p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

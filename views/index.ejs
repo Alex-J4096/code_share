@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>代码模块分享平台</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>代码模块分享平台</h1>
+            <nav>
+                <span>欢迎, <%= user.username %>!</span>
+                <% if (user.isAdmin) { %>
+                    <a href="/admin">管理员面板</a>
+                <% } %>
+                <a href="/upload">上传模块</a>
+                <a href="/logout">退出登录</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="modules-list">
+            <h2>共享代码模块</h2>
+            <% if (modules.length === 0) { %>
+                <p class="empty-message">暂无共享模块，请上传您的第一个模块！</p>
+            <% } else { %>
+                <div class="modules-grid">
+                    <% modules.forEach(module => { %>
+                        <div class="module-card">
+                            <h3><%= module.title %></h3>
+                            <div class="module-meta">
+                                <span>作者: <%= module.username %></span>
+                                <span>创建时间: <%= new Date(module.createdAt).toLocaleString() %></span>
+                            </div>
+                            <p class="module-description"><%= module.description || '无描述' %></p>
+                            <div class="module-actions">
+                                <a href="/module/<%= module.id %>" class="btn view-btn">查看</a>
+                                <% if (user.id === module.userId || user.isAdmin) { %>
+                                    <a href="/edit/<%= module.id %>" class="btn edit-btn">编辑</a>
+                                    <a href="/delete/<%= module.id %>" class="btn delete-btn" onclick="return confirm('确定要删除此模块吗？');">删除</a>
+                                <% } %>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } %>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>代码模块分享平台 &copy; <%= new Date().getFullYear() %></p>
+        </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
